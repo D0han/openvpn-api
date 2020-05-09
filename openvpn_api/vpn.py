@@ -18,11 +18,11 @@ class VPNType:
 
 
 class VPN:
-    def __init__(self, host: Optional[str] = None, port: Optional[int] = None, socket: Optional[str] = None):
-        if (socket and host) or (socket and port) or (not socket and not host and not port):
+    def __init__(self, host: Optional[str] = None, port: Optional[int] = None, unix_socket: Optional[str] = None):
+        if (unix_socket and host) or (unix_socket and port) or (not unix_socket and not host and not port):
             raise errors.VPNError("Must specify either socket or host and port")
-        if socket:
-            self._mgmt_socket = socket
+        if unix_socket:
+            self._mgmt_socket = unix_socket
             self._type = VPNType.UNIX_SOCKET
         else:
             self._mgmt_host = host
