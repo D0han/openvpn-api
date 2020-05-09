@@ -28,7 +28,7 @@ class VPN:
             self._mgmt_host = host
             self._mgmt_port = port
             self._type = VPNType.IP
-        self._socket = None
+        self._socket = None  # type: Optional[socket.socket]
         # Initialise release info and daemon state caches
         self._release = None  # type: Optional[str]
 
